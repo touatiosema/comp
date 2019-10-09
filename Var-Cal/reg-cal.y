@@ -23,6 +23,7 @@ void yyerror (char* s) {
 }
 %token <val> NUM /* attribut d’un nombre = valeur entiere */
 %token <val> ID  /* attribut d’un registre = sid */
+%token <val> FNUM
 %token PLUS MOINS MULT DIV PO PF EQ
 %token FIN       /* marque la fin d’une expression */
 %left PLUS MOINS 
@@ -41,7 +42,10 @@ cal:lig  /*axiome*/
 | cal lig ;
 
 lig : FIN              { printf ("? "); }
-| exp FIN              { printf ("= %i\n? ", $1->int_val); }
+| exp FIN              { if ($1 -> type_val == INT)
+      printf ("= %i\n? ", $1->int_val); 
+   else
+     printf ("= %f\n? ", $1->float_val);}
 | ID EQ exp FIN        { printf ("%s = %i\n? ", $1->name, $3->int_val);
                          set_symbol_value($1->name,$3);
                        }
@@ -57,6 +61,7 @@ exp
 | exp DIV exp          { $$ = div_attribute($1,$3);}
 | PO exp PF            { $$=$2;} 
 | ID                   { $$ = get_symbol_value($1->name); }
+| FNUM                 {$$ = $1;}
 ;
        
 

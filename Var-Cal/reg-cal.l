@@ -22,6 +22,13 @@
 		   yylval.val -> int_val =  atoi (yytext);
                    // printf("INT %d\n",yylval.val -> int_val); // for debug ?
                    return NUM; }
+
+[0-9]*"."[0-9]+     { yylval.val = new_attribute();
+                   yylval.val -> type_val = FLOAT;
+		   yylval.val -> float_val =  atof (yytext);
+                   // printf("FLOAT %f\n",yylval.val -> float_val); // for debug ?
+                   return FNUM; }
+
 [a-z]+           { yylval.val = new_attribute();
                    yylval.val -> name = string_to_sid(yytext);
 		   return ID; }

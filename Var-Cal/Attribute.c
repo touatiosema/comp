@@ -12,7 +12,22 @@ attribute new_attribute () {
 attribute plus_attribute(attribute x, attribute y) {
   attribute r = new_attribute();
   /* unconditionally adding integer values */
-  r -> int_val = x -> int_val + y -> int_val;
+  r -> type_val = FLOAT;
+  if (x->type_val == FLOAT) {
+    if (y->type_val == FLOAT) 
+      r -> float_val = x -> float_val + y -> float_val;
+    else
+      r -> float_val = x -> float_val + y -> int_val;
+  }
+  else {
+    if (y->type_val == FLOAT) 
+      r -> float_val = x -> int_val + y -> float_val;
+    else {
+      r -> type_val = INT;
+      r -> int_val = x -> int_val + y -> int_val;
+    }
+  }
+
   return r;
 };
 

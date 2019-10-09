@@ -55,29 +55,31 @@ extern int yydebug;
   {
     NUM = 258,
     ID = 259,
-    PLUS = 260,
-    MOINS = 261,
-    MULT = 262,
-    DIV = 263,
-    PO = 264,
-    PF = 265,
-    EQ = 266,
-    FIN = 267,
-    UNA = 268
+    FNUM = 260,
+    PLUS = 261,
+    MOINS = 262,
+    MULT = 263,
+    DIV = 264,
+    PO = 265,
+    PF = 266,
+    EQ = 267,
+    FIN = 268,
+    UNA = 269
   };
 #endif
 /* Tokens.  */
 #define NUM 258
 #define ID 259
-#define PLUS 260
-#define MOINS 261
-#define MULT 262
-#define DIV 263
-#define PO 264
-#define PF 265
-#define EQ 266
-#define FIN 267
-#define UNA 268
+#define FNUM 260
+#define PLUS 261
+#define MOINS 262
+#define MULT 263
+#define DIV 264
+#define PO 265
+#define PF 266
+#define EQ 267
+#define FIN 268
+#define UNA 269
 
 /* Value type.  */
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
@@ -88,7 +90,7 @@ union YYSTYPE
  
 	attribute val;
 
-#line 92 "y.tab.h" /* yacc.c:1909  */
+#line 94 "y.tab.h" /* yacc.c:1909  */
 };
 
 typedef union YYSTYPE YYSTYPE;
