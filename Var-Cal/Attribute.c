@@ -100,6 +100,8 @@ attribute neg_attribute(attribute x){
   attribute r = new_attribute();
   /* unconditionally adding integer values */
   r -> int_val = -(x -> int_val);
-  return r;
+  r -> float_val = - x -> float_val;
+  r -> type_val = x-> type_val;
+  return r; 
 };
 
